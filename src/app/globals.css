@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.input {
+  @apply w-full placeholder:text-xs px-2 py-[1px] rounded-md text-black 
+
+ 
+}
