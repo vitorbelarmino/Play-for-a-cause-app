@@ -1,3 +1,4 @@
+import { IMessage } from "./IMessage";
 import { IUser } from "./IUser";
 
 export interface IChat {
@@ -6,4 +7,5 @@ export interface IChat {
   createdAt: string;
   updatedAt: string;
   users: IUser[];
+  messages: IMessage[];
 }

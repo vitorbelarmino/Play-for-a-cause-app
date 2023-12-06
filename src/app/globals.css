@@ -28,6 +28,8 @@ body {
 
 .input {
   @apply w-full placeholder:text-xs px-2 py-[1px] rounded-md text-black 
+}
 
- 
+.scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-gray-400
 }

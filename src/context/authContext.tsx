@@ -4,12 +4,13 @@ import { ILogin, IRegister, IUser } from "@/interface/IUser";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCookie, setCookie } from "cookies-next";
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
 
 type AuthContextType = {
   login: (login: ILogin) => void;
   register: (register: IRegister) => void;
   user: IUser;
+  logout: () => void;
 };
 
 export const AuthContext = createContext({} as AuthContextType);
@@ -37,6 +38,12 @@ export default function AuthProvider({
         alert("E-mail ou senha incorretos");
       }
     }
+  };
+
+  const logout = () => {
+    deleteCookie("chat.userId");
+    setUser({} as IUser);
+    window.location.reload();
   };
 
   const recoverData = async () => {
@@ -98,7 +105,7 @@ export default function AuthProvider({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, register, user }}>
+    <AuthContext.Provider value={{ login, register, user, logout }}>
       {children}
     </AuthContext.Provider>
   );
