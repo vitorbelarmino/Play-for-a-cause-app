@@ -1,7 +1,7 @@
 # Chat Play For a Cause
 
 ## 💻 Projeto
-  Este é um projeto chat, onde você criar uma conta e conversar com outros usuarios em tempo real. O projeto é FullStack e inclui o repositório do back-end, que pode ser encontrado clicando [aqui](https://github.com/vitorbelarmino/Play-for-a-cause-service).
+  Este projeto é uma plataforma de chat que possibilita a criação de uma conta para interação em tempo real com outros usuários. Desenvolvido de forma FullStack, o projeto abrange o repositório do back-end, acessível ao clicar [aqui](https://github.com/vitorbelarmino/Play-for-a-cause-service).
 </br>
 
 ## 🚀 Tecnologias
@@ -19,13 +19,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 </br>
 
 ## 📌 Aprendizados
-Nesse projeto, fui capaz de:
-- Aprimorar minhas habilidades em React
-- Aprimorar habilidade em Next.js
-  * Middleware para proteção das rotas
-- Organização de código
-- Aprimorar habilidade com Taiwind
-- O grande apredizado com esse projeto foi a utilização do webSocket, foi muito gratificante.
+- Nesse projeto, fui capaz de:
+- Refinei minhas habilidades em React.
+- Aprimorei minha destreza em Next.js.
+- Implementei middleware para a proteção das rotas.
+- Aperfeiçoei a organização do código.
+- Elevei minhas habilidades com Tailwind CSS
+- Utilizei a biblioteca Zod para validar os inputs, garantindo uma abordagem eficaz e robusta na validação dos dados inseridos
+- O aspecto mais enriquecedor desse projeto foi, sem dúvida, a experiência gratificante ao trabalhar com webSocket.
 
 
 ## ⬇️ Como executar o projeto
