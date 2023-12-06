@@ -47,6 +47,14 @@ $ npm run dev
 
 # O App inciará na porta:3000 - acesse http://localhost:3000 
 ```
+## 📝 Ajustes e melhorias
+
+
+O projeto está sujeito a aprimoramentos pendentes, e futuras atualizações estarão focadas nas seguintes tarefas:
+
+- Introduzir a funcionalidade que permite a um usuário adicionar outros e realizar conversas privadas.
+- Lista de usuarios
+   
 
 > Github: https://github.com/vitorbelarmino
 
