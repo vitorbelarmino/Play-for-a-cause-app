@@ -3,7 +3,8 @@ import { api } from "@/api/index";
 import { ILogin, IRegister, IUser } from "@/interface/IUser";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getCookie, setCookie } from "cookies-next";
 
 type AuthContextType = {
   login: (login: ILogin) => void;
@@ -27,10 +28,29 @@ export default function AuthProvider({
       const { data: userData } = await api.post("user/login", login);
       setUser(userData);
       await getChat(userData.id);
+      setCookie("chat.userId", userData.id, {
+        expires: new Date(Date.now() + 86400000),
+        path: "/",
+      });
     } catch (error) {
       if (error instanceof AxiosError) {
         alert("E-mail ou senha incorretos");
       }
+    }
+  };
+
+  const recoverData = async () => {
+    const userId = getCookie("chat.userId");
+    if (!userId) {
+      return;
+    }
+    try {
+      if (userId) {
+        const { data } = await api.get(`user/${userId}`);
+        setUser(data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -72,6 +92,11 @@ export default function AuthProvider({
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    recoverData();
+  }, []);
+
   return (
     <AuthContext.Provider value={{ login, register, user }}>
       {children}
