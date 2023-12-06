@@ -5,10 +5,12 @@ import { IChat } from "@/interface/IChat";
 import { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { IoLogOutOutline, IoSend } from "react-icons/io5";
+import { io } from "socket.io-client";
 
 export default function chat() {
   const [chat, setChat] = useState<undefined | IChat>(undefined);
   const [text, setText] = useState("");
+  const socket = io("http://localhost:4001");
   const { user, logout } = Auth();
 
   const getChat = async () => {
@@ -30,14 +32,19 @@ export default function chat() {
         userId: user.id,
         userName: user.name,
       });
+      socket.emit("newMessage");
       setText("");
       getChat();
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getChat();
+    socket.on("message", () => {
+      getChat();
+    });
   }, []);
 
   const scrollToEnd = () => {
@@ -53,16 +60,13 @@ export default function chat() {
 
   return (
     <div className=" flex flex-col justify-center h-screen">
-      <div className="flex flex-col justify-end border-solid border-2 bg-[url('https://i.pinimg.com/736x/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg')] bg-contain border-blue-50 w-full h-full">
-        <div
-          id="teste"
-          className="flex items-center justify-between px-2 border-2 border-solid bg-gray-600 h-12 fixed w-full top-0 "
-        >
+      <div className="flex flex-col justify-end bg-[url('https://i.pinimg.com/736x/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg')] bg-contain w-full h-full">
+        <div className="flex items-center justify-between px-4 bg-gray-600 h-12 fixed w-full top-0 ">
           <div className="flex items-center px-2 rounded gap-2 bg-gray-500">
             <FaRegUser size={18} />
-            <p className="text-gray-200">{user.name}</p>
+            <p className="text-gray-200 text-">{user.name}</p>
           </div>
-          <p className="text-gray-200">Play for a cause chat </p>
+          <p className="text-gray-200">Chat Play For a Cause</p>
 
           <IoLogOutOutline
             size={25}
@@ -87,7 +91,7 @@ export default function chat() {
                 }`}
               >
                 {message.userId !== user.id && (
-                  <span className="text-xs">{message.userName}</span>
+                  <span className="text-xs font-bold">{message.userName}</span>
                 )}
 
                 <span className="text-sm">{message.text}</span>
