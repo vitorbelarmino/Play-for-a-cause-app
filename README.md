@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 </br>
 
 ## 📌 Aprendizados
-- Nesse projeto, fui capaz de:
+Neste projeto, conquistei as seguintes realizações:
 - Refinei minhas habilidades em React.
 - Aprimorei minha destreza em Next.js.
 - Implementei middleware para a proteção das rotas.
